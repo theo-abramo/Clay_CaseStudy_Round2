@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FlowFinance - Modern Spend Management Platform</title>
   <meta name="description" content="Empower your team with corporate cards, automated expense tracking, and real-time financial visibility.">
+  
+  <!-- Clay Website Tracking (Claydar) -->
+  <script src="https://static.claydar.com/init.v1.js?id=cCYR0WCyRA"></script>
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     * {
@@ -37,7 +41,8 @@
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white min-h-screen">
 
-\  <nav id="nav" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+  <!-- Navigation -->
+  <nav id="nav" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <div class="flex items-center space-x-2">
@@ -452,10 +457,38 @@
           ...data
         };
         this.events.push(event);
-        console.log('🎯 CLAY EVENT:', eventName);
-        console.log('📊 Data:', event);
-        console.log('💡 Clay Action:', this.getClayAction(eventName));
+        
+        // Log to console for demo/debugging
+        console.log('CLAY EVENT:', eventName);
+        console.log('Data:', event);
+        console.log('Clay Action:', this.getClayAction(eventName));
         console.log('---');
+        
+        // Send to Claydar (Clay's native tracking)
+        if (typeof claydar !== 'undefined') {
+          try {
+            // Track custom event
+            claydar.track(eventName, event);
+            
+            // If we have email/company data, identify the user
+            if (data.email) {
+              claydar.identify({
+                email: data.email,
+                company: data.company,
+                domain: this.extractDomain(data.email),
+                companySize: data.companySize,
+                ...data
+              });
+              console.log('User identified in Claydar:', data.email);
+            }
+            
+            console.log('Event sent to Claydar');
+          } catch (err) {
+            console.error('Claydar error:', err);
+          }
+        } else {
+          console.log('Claydar not loaded - event logged locally only');
+        }
       },
       getClayAction(eventName) {
         const actions = {
@@ -471,7 +504,7 @@
         return email ? email.split('@')[1] : null;
       },
       getSummary() {
-        console.log('📈 SESSION SUMMARY');
+        console.log('SESSION SUMMARY');
         console.log('Events:', this.events.length);
         console.log('Duration:', Math.round((Date.now() - parseInt(this.sessionId)) / 1000) + 's');
         console.table(this.events);
@@ -590,8 +623,16 @@
 
       ClayTracker.track('page_loaded', { referrer: document.referrer || 'direct' });
       
-      console.log('✅ FlowFinance + Clay Tracking Ready!');
-      console.log('💡 Type showClayData() to see all tracked events');
+      // Check Claydar status
+      if (typeof claydar !== 'undefined') {
+        console.log('Claydar (Clay Native Tracking) Loaded Successfully');
+        console.log('All events will be sent to Clay automatically');
+      } else {
+        console.log('Claydar not detected - events logged locally only');
+      }
+      
+      console.log('FlowFinance + Clay Tracking Ready!');
+      console.log('Type showClayData() to see all tracked events');
     });
 
     window.showClayData = () => ClayTracker.getSummary();
