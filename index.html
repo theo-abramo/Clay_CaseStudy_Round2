@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowFinance - Modern Spend Management Platform</title>
+  <meta name="description" content="Empower your team with corporate cards, automated expense tracking, and real-time financial visibility.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white min-h-screen">
+
+\  <nav id="nav" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+              <line x1="1" y1="10" x2="23" y2="10"></line>
+            </svg>
+          </div>
+          <span class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            FlowFinance
+          </span>
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#features" class="hover:text-purple-400 transition-colors">Features</a>
+          <a href="#pricing" class="hover:text-purple-400 transition-colors">Pricing</a>
+          <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+          <button id="nav-cta" class="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all">
+            Get Started
+          </button>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-lg">
+      <div class="px-4 pt-2 pb-4 space-y-2">
+        <a href="#features" class="block py-2 hover:text-purple-400">Features</a>
+        <a href="#pricing" class="block py-2 hover:text-purple-400">Pricing</a>
+        <a href="#about" class="block py-2 hover:text-purple-400">About</a>
+        <button id="mobile-cta" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-lg font-semibold mt-2">
+          Get Started
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center space-y-8 fade-in">
+        <div class="inline-block">
+          <span class="bg-purple-500/20 border border-purple-500/30 rounded-full px-4 py-2 text-sm font-semibold">
+            🚀 Trusted by 5,000+ companies worldwide
+          </span>
+        </div>
+        
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+          Modern Spend Management
+          <br />
+          <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+            Built for Scale
+          </span>
+        </h1>
+        
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Empower your team with corporate cards, automated expense tracking, and real-time financial visibility. 
+          All in one intelligent platform.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button id="hero-trial-btn" class="bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all flex items-center gap-2">
+            Start Free Trial
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </button>
+          <button id="hero-demo-btn" class="border border-purple-500/30 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-500/10 transition-all">
+            Book a Demo
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-purple-500/20">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">$2.4B+</div>
+            <div class="text-gray-400 mt-2">Processed Annually</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">5,000+</div>
+            <div class="text-gray-400 mt-2">Companies Trust Us</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">99.9%</div>
+            <div class="text-gray-400 mt-2">Uptime SLA</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">4.8/5</div>
+            <div class="text-gray-400 mt-2">Customer Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+          Everything You Need to<span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Manage Spending</span>
+        </h2>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">Powerful features that help finance teams work smarter, not harder</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Corporate Cards</h3>
+          <p class="text-gray-300">Issue unlimited virtual and physical cards with custom spending controls and real-time visibility.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Expense Analytics</h3>
+          <p class="text-gray-300">AI-powered insights that help you identify spending patterns and optimize your budget.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Fraud Protection</h3>
+          <p class="text-gray-300">Enterprise-grade security with real-time fraud detection and instant card freezing.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Instant Reconciliation</h3>
+          <p class="text-gray-300">Automatic receipt matching and categorization that syncs with your accounting software.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Team Management</h3>
+          <p class="text-gray-300">Granular permissions and approval workflows that scale with your organization.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Real-time Reporting</h3>
+          <p class="text-gray-300">Live dashboards and customizable reports that give you complete financial visibility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+          Simple, Transparent<span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Pricing</span>
+        </h2>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">Choose the plan that fits your company's needs. All plans include a 14-day free trial.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto" id="pricing-plans">
+        <!-- Plans will be tracked for hover/click -->
+        <div class="pricing-card bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 cursor-pointer" data-plan="Starter">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold mb-2">Starter</h3>
+            <p class="text-gray-400 mb-4">Perfect for small teams getting started</p>
+            <div class="flex items-baseline justify-center">
+              <span class="text-4xl font-bold">$</span>
+              <span class="text-6xl font-bold">49</span>
+              <span class="text-gray-400 ml-2">/month</span>
+            </div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Up to 5 corporate cards</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Basic expense tracking</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Monthly reports</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Email support</span></li>
+          </ul>
+          <button class="plan-btn w-full py-3 rounded-lg font-semibold transition-all bg-slate-700 hover:bg-slate-600" data-plan="Starter">Start Free Trial</button>
+        </div>
+
+        <div class="pricing-card relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg p-8 rounded-2xl border border-purple-500 shadow-lg shadow-purple-500/20 transition-all hover:transform hover:scale-105 cursor-pointer" data-plan="Growth">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+            <span class="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-1 rounded-full text-sm font-semibold">Most Popular</span>
+          </div>
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold mb-2">Growth</h3>
+            <p class="text-gray-400 mb-4">For growing companies scaling fast</p>
+            <div class="flex items-baseline justify-center">
+              <span class="text-4xl font-bold">$</span>
+              <span class="text-6xl font-bold">149</span>
+              <span class="text-gray-400 ml-2">/month</span>
+            </div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Up to 50 corporate cards</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Advanced analytics & AI insights</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Real-time reporting</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Priority support</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">API access</span></li>
+          </ul>
+          <button class="plan-btn w-full py-3 rounded-lg font-semibold transition-all bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/50" data-plan="Growth">Start Free Trial</button>
+        </div>
+
+        <div class="pricing-card bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 cursor-pointer" data-plan="Enterprise">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+            <p class="text-gray-400 mb-4">For large organizations with complex needs</p>
+            <div class="flex items-baseline justify-center">
+              <span class="text-6xl font-bold">Custom</span>
+            </div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Unlimited corporate cards</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Dedicated account manager</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">Custom reporting & BI tools</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-gray-300">24/7 premium support</span></li>
+          </ul>
+          <button class="plan-btn w-full py-3 rounded-lg font-semibold transition-all bg-slate-700 hover:bg-slate-600" data-plan="Enterprise" data-action="contact">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-4xl sm:text-5xl font-bold mb-6">Built by Finance Teams,<span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> For Finance Teams</span></h2>
+          <p class="text-xl text-gray-300 mb-6">We understand the challenges of managing corporate spending at scale. That's why we built FlowFinance - a platform that combines the power of corporate cards, intelligent automation, and real-time analytics.</p>
+          <p class="text-xl text-gray-300 mb-8">Join thousands of companies who have already transformed their spend management with FlowFinance.</p>
+          <button id="story-btn" class="bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all flex items-center gap-2">
+            Learn Our Story
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/20">
+            <div class="text-3xl font-bold mb-2">150+</div>
+            <div class="text-gray-400">Countries Supported</div>
+          </div>
+          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/20">
+            <div class="text-3xl font-bold mb-2">50M+</div>
+            <div class="text-gray-400">Transactions/Month</div>
+          </div>
+          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/20">
+            <div class="text-3xl font-bold mb-2">$0</div>
+            <div class="text-gray-400">Hidden Fees</div>
+          </div>
+          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/20">
+            <div class="text-3xl font-bold mb-2">24/7</div>
+            <div class="text-gray-400">Support Team</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-6">Ready to Transform Your<span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Spend Management?</span></h2>
+      <p class="text-xl text-gray-300 mb-8">Join thousands of companies already using FlowFinance. Get started with a free 14-day trial.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button id="cta-trial-btn" class="bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all">Start Free Trial</button>
+        <button id="cta-demo-btn" class="border border-purple-500/30 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-500/10 transition-all">Schedule Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900/80 border-t border-purple-500/20 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            </div>
+            <span class="text-xl font-bold">FlowFinance</span>
+          </div>
+          <p class="text-gray-400">Modern spend management for growing companies.</p>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Product</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-purple-400">Features</a></li>
+            <li><a href="#" class="hover:text-purple-400">Pricing</a></li>
+            <li><a href="#" class="hover:text-purple-400">API</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-purple-400">About</a></li>
+            <li><a href="#" class="hover:text-purple-400">Careers</a></li>
+            <li><a href="#" class="hover:text-purple-400">Blog</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Support</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-purple-400">Help Center</a></li>
+            <li><a href="#" class="hover:text-purple-400">Contact</a></li>
+            <li><a href="#" class="hover:text-purple-400">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-purple-500/20 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 FlowFinance. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <div id="demo-modal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 max-w-md w-full border border-purple-500/30 relative">
+      <button onclick="closeModal('demo-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      <h3 class="text-2xl font-bold mb-2">Book Your Demo</h3>
+      <p class="text-gray-400 mb-6">See how FlowFinance can transform your spend management</p>
+      <form id="demo-form" onsubmit="handleDemoSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-2">Work Email *</label>
+          <input type="email" required placeholder="you@company.com" class="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-2">Company Name *</label>
+          <input type="text" required placeholder="Acme Corp" class="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-2">Company Size</label>
+          <select class="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white">
+            <option>1-10 employees</option>
+            <option>11-50 employees</option>
+            <option>51-200 employees</option>
+            <option>201-500 employees</option>
+            <option>500+ employees</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all">Schedule Demo</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="trial-modal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 max-w-md w-full border border-purple-500/30 relative">
+      <button onclick="closeModal('trial-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      <h3 class="text-2xl font-bold mb-2">Start Your Free Trial</h3>
+      <p class="text-gray-400 mb-6">14 days free, no credit card required</p>
+      <form id="trial-form" onsubmit="handleTrialSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-2">Work Email *</label>
+          <input type="email" required placeholder="you@company.com" class="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-2">Company Name *</label>
+          <input type="text" required placeholder="Acme Corp" class="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-2">Phone Number</label>
+          <input type="tel" placeholder="+1 (555) 000-0000" class="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white">
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all">Start Free Trial</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="success-modal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 max-w-md w-full border border-purple-500/30 text-center">
+      <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+      </div>
+      <h3 class="text-2xl font-bold mb-2">Request Received!</h3>
+      <p class="text-gray-400 mb-6">We'll be in touch within 24 hours to schedule your demo.</p>
+      <button onclick="closeModal('success-modal')" class="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // ===== CLAY TRACKING SYSTEM =====
+    const ClayTracker = {
+      sessionId: Date.now() + '-' + Math.random().toString(36),
+      events: [],
+      track(eventName, data = {}) {
+        const event = {
+          event: eventName,
+          timestamp: new Date().toISOString(),
+          sessionId: this.sessionId,
+          url: window.location.href,
+          ...data
+        };
+        this.events.push(event);
+        console.log('🎯 CLAY EVENT:', eventName);
+        console.log('📊 Data:', event);
+        console.log('💡 Clay Action:', this.getClayAction(eventName));
+        console.log('---');
+      },
+      getClayAction(eventName) {
+        const actions = {
+          'pricing_page_viewed': '→ Check hiring OR funding → Qualify lead',
+          'demo_requested': '→ Enrich → Find CFO → Personalized outreach',
+          'trial_started': '→ HIGH INTENT! Priority enrichment + immediate outreach',
+          'plan_clicked': '→ Track tier preference → Tailor messaging',
+          'plan_hover': '→ Track interest signals'
+        };
+        return actions[eventName] || 'Process & enrich';
+      },
+      extractDomain(email) {
+        return email ? email.split('@')[1] : null;
+      },
+      getSummary() {
+        console.log('📈 SESSION SUMMARY');
+        console.log('Events:', this.events.length);
+        console.log('Duration:', Math.round((Date.now() - parseInt(this.sessionId)) / 1000) + 's');
+        console.table(this.events);
+      }
+    };
+
+    // ===== MODAL FUNCTIONS =====
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      ClayTracker.track('modal_opened', { modalId: id });
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+    function handleDemoSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const email = form.querySelector('input[type="email"]').value;
+      const company = form.querySelector('input[type="text"]').value;
+      const size = form.querySelector('select').value;
+      ClayTracker.track('demo_requested', {
+        email, company, companySize: size,
+        domain: ClayTracker.extractDomain(email),
+        intent: 'HIGH'
+      });
+      closeModal('demo-modal');
+      openModal('success-modal');
+      form.reset();
+    }
+    function handleTrialSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const email = form.querySelector('input[type="email"]').value;
+      const company = form.querySelectorAll('input[type="text"]')[0].value;
+      ClayTracker.track('trial_started', {
+        email, company,
+        domain: ClayTracker.extractDomain(email),
+        intent: 'VERY HIGH'
+      });
+      closeModal('trial-modal');
+      openModal('success-modal');
+      form.reset();
+    }
+
+    // ===== INITIALIZATION =====
+    window.addEventListener('load', () => {
+      // Button handlers
+      document.getElementById('nav-cta').onclick = () => { openModal('trial-modal'); ClayTracker.track('cta_clicked', {location:'nav'}); };
+      document.getElementById('mobile-cta').onclick = () => { openModal('trial-modal'); ClayTracker.track('cta_clicked', {location:'mobile'}); };
+      document.getElementById('hero-trial-btn').onclick = () => { openModal('trial-modal'); ClayTracker.track('cta_clicked', {location:'hero'}); };
+      document.getElementById('hero-demo-btn').onclick = () => { openModal('demo-modal'); ClayTracker.track('cta_clicked', {location:'hero'}); };
+      document.getElementById('cta-trial-btn').onclick = () => { openModal('trial-modal'); ClayTracker.track('cta_clicked', {location:'cta'}); };
+      document.getElementById('cta-demo-btn').onclick = () => { openModal('demo-modal'); ClayTracker.track('cta_clicked', {location:'cta'}); };
+      document.getElementById('story-btn').onclick = () => { alert('This would link to About page!\n\nClay tracks this as MEDIUM intent.'); ClayTracker.track('about_clicked'); };
+      
+      // Plan buttons
+      document.querySelectorAll('.plan-btn').forEach(btn => {
+        btn.onclick = () => {
+          const plan = btn.dataset.plan;
+          if (btn.dataset.action === 'contact') {
+            openModal('demo-modal');
+            ClayTracker.track('enterprise_contact', { plan });
+          } else {
+            openModal('trial-modal');
+            ClayTracker.track('plan_selected', { plan });
+          }
+        };
+      });
+
+      // Pricing card tracking
+      document.querySelectorAll('.pricing-card').forEach(card => {
+        const plan = card.dataset.plan;
+        card.addEventListener('mouseenter', () => ClayTracker.track('plan_hover', { plan }));
+        card.addEventListener('click', (e) => {
+          if (e.target.tagName !== 'BUTTON') ClayTracker.track('plan_clicked', { plan });
+        });
+      });
+
+      // Section tracking
+      ['features', 'pricing', 'about'].forEach(id => {
+        const section = document.getElementById(id);
+        if (!section) return;
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              ClayTracker.track(id + '_viewed', { 
+                intent: id === 'pricing' ? 'HIGH' : 'MEDIUM' 
+              });
+            }
+          });
+        }, { threshold: 0.5 });
+        observer.observe(section);
+      });
+
+      // Mobile menu
+      document.getElementById('mobile-menu-btn').onclick = () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+      };
+
+      // Nav scroll
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          nav.classList.add('bg-slate-900/95', 'backdrop-blur-lg', 'shadow-lg');
+          nav.classList.remove('bg-transparent');
+        } else {
+          nav.classList.remove('bg-slate-900/95', 'backdrop-blur-lg', 'shadow-lg');
+          nav.classList.add('bg-transparent');
+        }
+      });
+
+      // Close modals on outside click
+      document.querySelectorAll('[id$="-modal"]').forEach(modal => {
+        modal.onclick = (e) => { if (e.target === modal) closeModal(modal.id); };
+      });
+
+      ClayTracker.track('page_loaded', { referrer: document.referrer || 'direct' });
+      
+      console.log('✅ FlowFinance + Clay Tracking Ready!');
+      console.log('💡 Type showClayData() to see all tracked events');
+    });
+
+    window.showClayData = () => ClayTracker.getSummary();
+    window.addEventListener('beforeunload', () => ClayTracker.getSummary());
+  </script>
+
+</body>
+</html>
